@@ -11,7 +11,7 @@
 
 
 
-.         { caracteres++;}                  /* por fim, considero tudo como caractere (letras, pontos, espaços, etc)  */
+.         { caracteres++;}                  /* por fim, considero tudo como caractere (letras, pontos, espaços, etc), exceto nova linha  */
 
 
 %%
@@ -22,7 +22,7 @@ int yywrap(void){ /* funcao necessaria para o funcionamento */
 }
 
 int main(void) {
-        yylex(); //funcao yacc
+        yylex(); //funcao lex
         
         printf("Linhas: %d\t Palavras: %d\t Caracteres: %d\n", linhas, palavras, caracteres);/* imprimo as quantidades */
         
