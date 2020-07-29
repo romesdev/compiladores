@@ -1,21 +1,27 @@
 %{
-        int nchar, nword, nline;
+        int caracteres, palavras, linhas; /* definindo as minhas variáveis */
 %}
-%%
-\n              { nline++;}
-[A-Za-z0-9]+    { nword++, nchar += yyleng; }
 
 %%
-int yywrap(void){
+
+\n        { linhas++; caracteres++; }   /* cada linha é um \n e considero \n como caractere também */
+
+
+[^ \t\n]+ { palavras++, caracteres += yyleng; } /* desconsiderando os espaços e tabulações, o padrão que casa é considerado palavra. e uso a função do yacc para contar caracteres dessa palavra e somar na qtd de caracteres  */
+
+
+
+.         { caracteres++;}                  /* por fim, considero tudo como caractere (letras, pontos, espaços, etc)  */
+
+
+%%
+int yywrap(void){ /* funcao necessaria para o funcionamento */
         return 1;
+
 }
 
 int main(void) {
         yylex();
-        printf("Char: %d ; \t Palavras: %d ; \t Linhas: %d\n", nchar, nword, nline);
+        printf("Linhas: %d\t Palavras: %d\t Caracteres: %d\n", linhas, palavras, caracteres);/* imprimo as quantidades */
         return 0;
-}
-
-
-//ç  ãñõ àèìòù áéíóúý âêîôû ü
-//   Ç ÃÑÕ ÀÈÌÒÙ ÁÉÍÓÚÝ ÂÊÎÔÛ Ü
+                  
