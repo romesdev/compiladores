@@ -7,7 +7,7 @@
 \n        { linhas++; caracteres++; }   /* cada linha é um \n e considero \n como caractere também */
 
 
-[^ \t\n]+ { palavras++, caracteres += yyleng; } /* desconsiderando os espaços e tabulações, o padrão que casa é considerado palavra. e uso a função do yacc para contar caracteres dessa palavra e somar na qtd de caracteres  */
+[^ \t\n]+ { palavras++, caracteres += yyleng; } /* desconsiderando os espaços e tabulações, o padrão que casa é considerado palavra. e uso a variável global do lex para contar caracteres dessa palavra e somar na qtd de caracteres  */
 
 
 
