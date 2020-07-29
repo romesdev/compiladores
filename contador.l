@@ -15,13 +15,16 @@
 
 
 %%
+
 int yywrap(void){ /* funcao necessaria para o funcionamento */
         return 1;
 
 }
 
 int main(void) {
-        yylex();
+        yylex(); //funcao yacc
+        
         printf("Linhas: %d\t Palavras: %d\t Caracteres: %d\n", linhas, palavras, caracteres);/* imprimo as quantidades */
+        
         return 0;
-                  
+}
