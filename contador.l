@@ -23,7 +23,7 @@ int yywrap(void){ /* funcao necessaria para o funcionamento */
 
 int main(void) {
         yylex(); //funcao lex
-        
+        printf("\n");
         printf("Linhas: %d\t Palavras: %d\t Caracteres: %d\n", linhas, palavras, caracteres);/* imprimo as quantidades */
         
         return 0;
